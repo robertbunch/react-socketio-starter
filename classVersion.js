@@ -23,6 +23,7 @@ class MyReactSocket{
                 queryObj ? {query: queryObj} : ``,
                 options ? options : ``
             );
+
             //run callback once connection is confirmed
             this.socket.on("connect", ()=> {
                 this.connected = true;
@@ -53,7 +54,7 @@ class MyReactSocket{
             this.socket.on(eventName,callbackToRun)
             this.addedEvents.push(eventName)
         }else{
-            // console.log(`Did not ${eventName} add again`)
+            console.log(`Did not ${eventName} add again`)
         }
         
     }

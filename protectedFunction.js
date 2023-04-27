@@ -1,6 +1,6 @@
 import io from 'socket.io-client';
 
-const MyReactSocket = ()=> {
+const MyReactSocket = function(){
     //init socket and connected vars
     let socket = {};
     let connected = false;
@@ -16,10 +16,12 @@ const MyReactSocket = ()=> {
         //initiate connection only if already connected
         if(!connected){
             socket = io.connect(
-                window.apiHost ? window.apiHost : host,
+                host,
                 authObj ? {auth: authObj} : ``,
                 queryObj ? {query: queryObj} : ``,
+                options ? options : ``,
             );
+
             //run callback once connection is confirmed
             socket.on("connect", ()=> {
                 connected = true;
@@ -47,21 +49,21 @@ const MyReactSocket = ()=> {
         const eventExists = addedEvents.find(e=>e===eventName)
         if(!eventExists){
             const callbackToRun = typeof callback === "function" ? callback : ()=>{}
-            this.socket.on(eventName,callbackToRun)            
-            this.events.push(eventName)
+            socket.on(eventName,callbackToRun)            
+            addedEvents.push(eventName)
         }else{
-            // console.log(`Did not ${eventName} add again`)
+            console.log(`Did not ${eventName} add again`)
         }
     }
 
     //emitEvent function emits an event to the server
-    const emitEvent = (eventName,data)=> {
+    const emit = (eventName,data)=> {
         socket.emit(eventName,data);
     }
     return {
         connect,
         close,
-        emitEvent,
+        emit,
         addEvent
     }
 }
