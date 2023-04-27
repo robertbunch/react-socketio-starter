@@ -1,0 +1,23 @@
+{
+  "name": "reactsocketiostarter",
+  "version": "1.0.0",
+  "description": "A starter script for using socket.io with React. It is meant to limit the socket logic in your application and can be included in any file you need your socket connection",
+  "main": "basicFunctional.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robertbunch/react-socketio-starter.git"
+  },
+  "keywords": [
+    "socket.io",
+    "react"
+  ],
+  "author": "Robert Bunch",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robertbunch/react-socketio-starter/issues"
+  },
+  "homepage": "https://github.com/robertbunch/react-socketio-starter#readme"
+}
